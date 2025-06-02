@@ -5,6 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gym Website</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+    .modal-content {
+      transform: scale(0.7);
+      transition: transform 0.3s ease-in-out;
+    }
+    .modal.show .modal-content {
+      transform: scale(1);
+    }
+    .membership-card {
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .membership-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
   <section class="relative min-h-screen bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
@@ -12,14 +44,67 @@
     <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center text-white px-4">
       <h1 class="text-5xl font-bold mb-4">Furnace Gym</h1>
       <p class="text-xl mb-8">Build strength, burn fat, and stay fit with our professional training programs.</p>
-      <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300">Get Started</a>
+      <button onclick="openModal()" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300">Get Started</button>
     </div>
   </section>
+
+  <!-- Membership Modal -->
+  <div id="membershipModal" class="modal">
+    <div class="modal-content bg-white rounded-lg p-8 max-w-4xl mx-auto my-8 w-full">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-bold text-gray-800">Choose Your Membership</h2>
+        <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Weekly Membership -->
+        <div class="membership-card bg-white rounded-lg shadow-lg p-6 border-2 border-blue-500">
+          <h3 class="text-2xl font-bold text-blue-600 mb-4">Weekly</h3>
+          <p class="text-4xl font-bold mb-4">₹2,000</p>
+          <ul class="text-gray-600 mb-6">
+            <li class="mb-2">✓ Full gym access</li>
+            <li class="mb-2">✓ Basic equipment usage</li>
+            <li class="mb-2">✓ Locker room access</li>
+          </ul>
+          <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">Select Plan</button>
+        </div>
+
+        <!-- Monthly Membership -->
+        <div class="membership-card bg-white rounded-lg shadow-lg p-6 border-2 border-blue-500 transform scale-105">
+          <div class="absolute top-0 right-0 bg-blue-600 text-white px-4 py-1 rounded-bl-lg">Popular</div>
+          <h3 class="text-2xl font-bold text-blue-600 mb-4">Monthly</h3>
+          <p class="text-4xl font-bold mb-4">₹6,000</p>
+          <ul class="text-gray-600 mb-6">
+            <li class="mb-2">✓ All Weekly features</li>
+            <li class="mb-2">✓ Group classes</li>
+            <li class="mb-2">✓ 2 PT sessions</li>
+          </ul>
+          <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">Select Plan</button>
+        </div>
+
+        <!-- Yearly Membership -->
+        <div class="membership-card bg-white rounded-lg shadow-lg p-6 border-2 border-blue-500">
+          <h3 class="text-2xl font-bold text-blue-600 mb-4">Yearly</h3>
+          <p class="text-4xl font-bold mb-4">₹30,000</p>
+          <ul class="text-gray-600 mb-6">
+            <li class="mb-2">✓ All Monthly features</li>
+            <li class="mb-2">✓ Unlimited PT sessions</li>
+            <li class="mb-2">✓ Nutrition consultation</li>
+          </ul>
+          <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">Select Plan</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section class="py-16 px-6 max-w-4xl mx-auto text-center bg-white">
     <h2 class="text-2xl font-semibold mb-4">About Us</h2>
     <p>Welcome to Furnace, where strength is forged and limits are shattered.
-      We’re more than a gym — we’re a community that pushes, supports, and grows together.
+      We're more than a gym — we're a community that pushes, supports, and grows together.
       Step into the heat, rise through the challenge, and become your strongest self.
       </p>
   </section>
@@ -64,5 +149,27 @@
   <footer class="text-center py-6 bg-gray-800 text-white">
     <p>© 2025 Welcome to Flex Gym. All rights reserved.</p>
   </footer>
+
+  <script>
+    function openModal() {
+      const modal = document.getElementById('membershipModal');
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('membershipModal');
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('membershipModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
 </body>
 </html>
