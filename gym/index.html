@@ -7,10 +7,13 @@
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-white text-gray-800 font-sans">
-  <section class="text-center py-20 bg-blue-600 text-white">
-    <h1 class="text-4xl font-bold">Welcome to Flex Gym</h1>
-    <p class="mt-4 text-lg">Build strength, burn fat, and stay fit with our professional training programs.</p>
-    <a href="#contact" class="mt-6 inline-block bg-white text-blue-600 px-6 py-2 rounded">Get Started</a>
+  <section class="relative h-[500px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+      <h1 class="text-5xl font-bold mb-4">Welcome to Flex Gym</h1>
+      <p class="text-xl mb-8">Build strength, burn fat, and stay fit with our professional training programs.</p>
+      <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300">Get Started</a>
+    </div>
   </section>
 
   <section class="py-16 px-6 max-w-4xl mx-auto text-center">
