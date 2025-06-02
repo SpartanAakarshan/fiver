@@ -1,0 +1,12 @@
+{
+  "name": "business-websites",
+  "version": "1.0.0",
+  "description": "Static websites for gym, bakery, and clinic",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+} 

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  gym:
+    build:
+      context: ./gym
+      dockerfile: ../Dockerfile
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+
+  bakery:
+    build:
+      context: ./bakery
+      dockerfile: ../Dockerfile
+    ports:
+      - "8082:80"
+    restart: unless-stopped
+
+  clinic:
+    build:
+      context: ./clinic
+      dockerfile: ../Dockerfile
+    ports:
+      - "8083:80"
+    restart: unless-stopped 
